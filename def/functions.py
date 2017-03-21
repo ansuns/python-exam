@@ -26,8 +26,21 @@ def move(x, y, step, angle = 0):
 #print(move(1,4,100,0))
 
 #计算平方
-def power(x):
-    return x * x
+def power(x, n = 2):
+    s = 1
+    while n > 0:
+        n = n - 1
+        s = s * n
+    return s
+
+#给定一组数字a，b，c……，请计算a2 + b2 + c2 + ……。
+#定义可变参数和定义一个list或tuple参数相比，仅仅在参数前面加了一个*号。在函数内部，参数numbers接收到的
+#是一个tuple，因此，函数代码完全不变。但是，调用该函数时，可以传入任意个参数，包括0个参数：
+def calc(*numbers):
+    sum = 0
+    for item in numbers:
+        sum = sum + item * item
+        return sum
 
 
 
