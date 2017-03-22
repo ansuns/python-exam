@@ -9,7 +9,7 @@ g = lambda x : x + 1
 
 '''
 等价于
-def g(x):
+defs g(x):
     return x + 1
 '''
 

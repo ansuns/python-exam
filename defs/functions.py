@@ -71,7 +71,7 @@ def person(name, age , **kw):
 
 仍以person()函数为例，我们希望检查是否有city和job参数：
 
-def person(name, age, **kw):
+defs person(name, age, **kw):
     if 'city' in kw:
         # 有city参数
         pass

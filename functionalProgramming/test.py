@@ -67,7 +67,7 @@ TypeError: 'int' object is not callable
 
 一个最简单的高阶函数：
 
-def add(x, y, f):
+defs add(x, y, f):
     return f(x) + f(y)
 当我们调用add(-5, 6, abs)时，参数x，y和f分别接收-5，6和abs，根据函数定义，我们可以推导计算过程为：
 

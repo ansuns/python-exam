@@ -73,7 +73,7 @@ generator非常强大。如果推算的算法比较复杂，用类似列表生�
 
 斐波拉契数列用列表生成式写不出来，但是，用函数把它打印出来却很容易：
 
-def fib(max):
+defs fib(max):
     n, a, b = 0, 0, 1
     while n < max:
         print(b)
@@ -104,7 +104,7 @@ b = t[1]
 
 也就是说，上面的函数和generator仅一步之遥。要把fib函数变成generator，只需要把print(b)改为yield b就可以了：
 
-def fib(max):
+defs fib(max):
     n, a, b = 0, 0, 1
     while n < max:
         yield b
@@ -120,7 +120,7 @@ def fib(max):
 
 举个简单的例子，定义一个generator，依次返回数字1，3，5：
 
-def odd():
+defs odd():
     print('step 1')
     yield 1
     print('step 2')
