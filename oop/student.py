@@ -2,15 +2,41 @@
 # -*- coding: utf-8 -*-
 __author__ = 'RoLiHop'
 
+#实例的变量名如果以__(两个)开头，就变成了一个私有变量（private）
 class Student(object):
     def __init__(self, name, age):
-        self.name = name
-        self.age = age
+        self.__name = name
+        self.__age = age
+
+    def print_score(self):
+        print('%s的年龄是：%s'%(self.__name, self.__age))
+
+    def set_name(self):
+        return self.__name
+
+    def get_name(self):
+        return self.__name
+
+    def set_age(self, age):
+        if 0 <= age <= 150:
+            self.__age = age
+        else:
+            raise ValueError('不合法的年龄')
+
+    def get_age(self):
+        return self.__age
 
 
-st = Student('张是哪', 21)
+class Test(object):
+    pass
 
-print(st)
+#st = Student('张是哪', 20)
+#st.print_score()
+#print(st.__name)
+# 但是如果外部代码要获取name和score怎么办？可以给Student类增加get_name和get_score这样的方法：
+
+
+
 
 
 '''
