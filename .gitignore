@@ -4,3 +4,6 @@
 .DS_Store
 */.idea/
 .idea/
+
+#python
+*/__pycache__
