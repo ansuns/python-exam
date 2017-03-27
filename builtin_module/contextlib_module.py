@@ -22,36 +22,22 @@ with Person('ansuns') as q:
     q.query()
 
 #编写__enter__和__exit__仍然很繁琐，因此Python的标准库contextlib提供了更简单的写法，上面的代码可以改写如下：
-class Query(object):
 
-    def __init__(self, name):
-        self.name = name
-
-    def query(self):
-        print('Query info about %s...' % self.name)
-
-@contextmanager
-def create_query(name):
-    print('Begin')
-    q = Query(name)
-    yield q
-    print('End')
-'''
 class Person2(object):
     def __init__(self, name):
         self.name = name
     def query(self):
         print('query about %s' % self.name)
 
-    @contextmanager
+
     def create_query(name):
         print('begin')
         q = Person2(name)
         yield q
         print('end')
 with create_query('ansuns') as q:
-    q.query()
-'''
+    q.query
+
 '''
 在Python中，读写文件这样的资源要特别注意，必须在使用完毕后正确关闭它们。正确关闭文件资源的一个方法是使用try...finally：
 
