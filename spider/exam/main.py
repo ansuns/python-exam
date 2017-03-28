@@ -23,6 +23,7 @@ class Spider(object):
                 print('craw %d : %s' %(count, new_url))
                 html_cont = self.downloader.download(new_url)
                 new_urls, new_data = self.parser.parser(new_url, html_cont)
+                self.urls.add_new_urls(new_urls)    #新的URL加入管理器
                 self.outputer.collect_data(new_data)
 
                 if count == 1000 :
