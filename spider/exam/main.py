@@ -26,7 +26,7 @@ class Spider(object):
                 self.urls.add_new_urls(new_urls)    #新的URL加入管理器
                 self.outputer.collect_data(new_data)
 
-                if count == 1000 :
+                if count == 200 :
                     break
                 count = count + 1
             except:
