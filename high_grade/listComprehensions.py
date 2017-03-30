@@ -1,6 +1,27 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 __author__ = 'RoLiHop'
+import random
+
+L = []
+for x in range(1, 11):
+  L.append(x * x)
+print(L)
+
+#循环太繁琐，而列表生成式则可以用一行语句代替循环生成上面的list：
+X = [x * x for x in range(1, 11)]
+print(X)
+#写列表生成式时，把要生成的元素x * x放到前面，后面跟for循环，就可以把list创建出来，十分有用，多写几次，很快就可以熟悉这种语法。
+
+A = [x * x for x in range(1, 11) if x % 2 == 0]
+
+print(A)
+
+randstr = ['A','B','C','D','E','F','G','H','J','K','L','M','N','O','P','Q','R','S','T','X','Y','Z','1','2','3','4','5','6','7','8','9','0']
+print( random.sample(randstr, 4))
+P = [m + n + c for m in '粤' for n in 'ABCDEFGHJKLMNOPQRSTXYZ' for c in random.sample(randstr, 4)]
+print(P)
+
 
 '''
 列表生成式即List Comprehensions，是Python内置的非常简单却强大的可以用来创建list的生成式。
