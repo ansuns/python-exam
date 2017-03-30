@@ -1,6 +1,87 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 __author__ = 'RoLiHop'
+
+
+#要创建一个generator，有很多种方法。第一种方法很简单，只要把一个列表生成式的[]改成()，就创建了一个generator：
+#如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：
+
+g = (x * x for x in range(1, 101) if x % 2 == 0)
+
+#<generator object <genexpr> at 0x0056F510>
+print(g)
+
+for n in g:
+    print(n)
+
+
+def fib(max):
+    n, x, m = 0, 0, 1
+    while n < max:
+        print(m)
+        x, m = m, x + m
+        n = n + 1
+    return 'done'
+
+
+'''
+注意，赋值语句：
+
+a, b = b, a + b
+相当于：
+
+t = (b, a + b) # t是一个tuple
+a = t[0]
+b = t[1]
+'''
+
+fib(5)
+
+'''
+仔细观察，可以看出，fib函数实际上是定义了斐波拉契数列的推算规则，可以从第一个元素开始，推算出后续任意的元素，这种逻辑其实非常类似generator。
+
+也就是说，上面的函数和generator仅一步之遥。要把fib函数变成generator，只需要把print(b)改为yield b就可以了：
+'''
+
+
+def fib2(max):
+    n, x, m = 0, 0, 1
+    while n < max:
+        #yield x 求的是m，不是x
+        yield m
+        x, m = m, x + m
+        #yield m 这里多了一个 8
+        n = n + 1
+    return 'done'
+
+res = fib2(5)
+for n in  res:
+    print(n)
+
+'''
+最难理解的就是generator和函数的执行流程不一样。函数是顺序执行，遇到return语句或者
+最后一行函数语句就返回。而变成generator的函数，在每次调用next()的时候执行，遇到yield语
+句返回，再次执行时从上次返回的yield语句处继续执行。
+'''
+
+
+
+#杨辉三角
+def sanj(lg):
+    L = [1]
+    while True:
+        yield L
+        L.append(0)
+        #L = [L[i - 1] + [i] for i in range(len(L)) if i > 0] +[1]
+        L = [1] + [L[i-1]+L[i] for i in range(len(L)) if i > 0] + [1]
+    if len(L) > lg:
+        return
+
+for n in sanj(8):
+    print(n)
+
+
+
 #生成器
 '''
 通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了。
