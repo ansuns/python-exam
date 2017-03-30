@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 __author__ = 'RoLiHop'
 
+from functools import reduce
+
 def f(x):
     return x * x
 
@@ -9,6 +11,23 @@ res = map(f,[1, 2, 3, 4, 5, 6, 7, 8, 9])
 newList = list(res)
 print(newList)
 
+
+#reduce
+#reduce把一个函数作用在一个序列[x1, x2, x3, ...]上，这个函数必须接收两个参数，reduce把结果继续和序列的下一个元素做累积计算
+def add(x , y):
+    return x + y
+res = reduce(add, [1,2,3,4,5,6,7,8])
+
+print(res)
+
+
+def fn(x, y):
+    r = x * 10 + y
+    #print(r)
+    return x * 10 + y
+
+res = reduce(fn, [1,3,5,7,9])
+print(res)
 '''
 Python内建了map()和reduce()函数。
 
