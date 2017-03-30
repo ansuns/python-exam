@@ -67,17 +67,16 @@ for n in  res:
 
 
 #杨辉三角
-def sanj(lg):
+def sanj():
     L = [1]
     while True:
         yield L
         L.append(0)
         #L = [L[i - 1] + [i] for i in range(len(L)) if i > 0] +[1]
         L = [1] + [L[i-1]+L[i] for i in range(len(L)) if i > 0] + [1]
-    if len(L) > lg:
-        return
 
-for n in sanj(8):
+
+for n in sanj():
     print(n)
 
 
