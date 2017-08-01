@@ -12,6 +12,7 @@ def log(text):
             print('%s %s :' % (text, func.__name__))
             func(*args, **kw)
             print('end call:')
+            return func
         return wrapper
     return decorator
 
