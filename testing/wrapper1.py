@@ -10,6 +10,7 @@ class Coor(object):
     def __repr__(self):
         return 'Coor:' + str(self.__dict__)
 
+
 #装饰器
 def wrapper(func):
     def check(a, b):
