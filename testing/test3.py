@@ -8,10 +8,10 @@ def log(text):
     def decorator(func):
         @functools.wraps(func)
         def wrapper(*args, **kw):
-            print('begin call:')
+            print('begin call: %s' % func.__name__)
             print('%s %s :' % (text, func.__name__))
             func(*args, **kw)
-            print('end call:')
+            print('end call: %s' % func.__name__)
             return func
         return wrapper
     return decorator
